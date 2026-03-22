@@ -1,0 +1,84 @@
+/* =========================================
+   Admin Dashboard Styles (Dark Analytics Theme)
+   Primary Colors: Purple & Light Blue
+   ========================================= */
+
+:root {
+  --bg-dark: #0b0e14;          /* နောက်ခံ အမည်းရောင် */
+  --surface-dark: #151a23;     /* ကတ်များ၏ နောက်ခံ */
+  --surface-hover: #1e2532;
+  --border-dark: #232b38;
+  --text-main: #e0e6ed;
+  --text-muted: #8b94a5;
+  
+  --accent-purple: #8a2be2;    /* ခရမ်းရောင် */
+  --accent-light-blue: #00d2ff; /* အပြာနုရောင် */
+  --accent-danger: #ff4d4f;
+  
+  font-family: 'Montserrat', 'Pyidaungsu', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg-dark); color: var(--text-main); font-family: var(--font-family); display: flex; height: 100vh; overflow: hidden; }
+
+/* --- Sidebar --- */
+.sidebar { width: 260px; background: var(--bg-dark); border-right: 1px solid var(--border-dark); padding: 25px 20px; display: flex; flex-direction: column; overflow-y: auto; }
+.logo-area { display: flex; align-items: center; gap: 12px; margin-bottom: 40px; }
+.logo-icon { width: 35px; height: 35px; background: linear-gradient(135deg, var(--accent-purple), var(--accent-light-blue)); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; font-size: 18px; }
+.logo-text { font-weight: 800; font-size: 18px; letter-spacing: 0.5px; color: #fff; }
+
+.nav-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin: 20px 0 10px 10px; font-weight: 700; }
+.nav-menu { list-style: none; margin-bottom: 20px; }
+.nav-item { display: flex; align-items: center; gap: 15px; padding: 12px 15px; border-radius: 8px; color: var(--text-muted); cursor: pointer; font-weight: 600; font-size: 14px; margin-bottom: 5px; transition: 0.3s; }
+.nav-item i { font-size: 18px; }
+.nav-item.active { background: rgba(138, 43, 226, 0.1); color: var(--accent-light-blue); border-right: 3px solid var(--accent-light-blue); }
+.nav-item:hover:not(.active) { color: #fff; background: var(--surface-hover); }
+
+/* --- Main Content --- */
+.main-wrapper { flex: 1; display: flex; flex-direction: column; background: var(--bg-dark); overflow-y: auto; padding: 30px 40px; }
+.page-header { margin-bottom: 30px; }
+.page-title { font-size: 24px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+.page-sub { font-size: 13px; color: var(--text-muted); }
+
+/* --- Analytics UI (Based on Apex Dark Theme) --- */
+.analytics-stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-bottom: 25px; }
+.stat-box { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 12px; padding: 25px; transition: 0.3s; }
+.stat-box:hover { border-color: var(--accent-purple); box-shadow: 0 5px 20px rgba(138, 43, 226, 0.1); }
+.stat-title { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; font-weight: 600; display: flex; justify-content: space-between; }
+.stat-value { font-size: 28px; font-weight: 800; color: #fff; margin-bottom: 5px; }
+.stat-trend { font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 5px; }
+.trend-up { color: var(--accent-light-blue); }
+.trend-down { color: var(--accent-danger); }
+
+.analytics-charts-row { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 25px; }
+.chart-card { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 12px; padding: 25px; }
+.chart-header { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 20px; }
+
+/* Mock Bar Chart */
+.bar-item { margin-bottom: 15px; }
+.bar-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 5px; }
+.bar-track { width: 100%; height: 8px; background: var(--border-dark); border-radius: 4px; overflow: hidden; }
+.bar-fill { height: 100%; background: linear-gradient(90deg, var(--accent-purple), var(--accent-light-blue)); border-radius: 4px; }
+
+/* Tables Row */
+.analytics-tables-row { display: grid; grid-template-columns: 1.5fr 1fr; gap: 20px; }
+.table-card { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 12px; padding: 25px; }
+.data-table { width: 100%; border-collapse: collapse; }
+.data-table th { text-align: left; padding: 10px 0; font-size: 12px; color: var(--text-muted); border-bottom: 1px solid var(--border-dark); font-weight: 600; }
+.data-table td { padding: 12px 0; font-size: 13px; color: var(--text-main); border-bottom: 1px solid var(--border-dark); }
+.data-table tr:last-child td { border-bottom: none; }
+
+/* --- Editor UI --- */
+.editor-card { background: var(--surface-dark); border: 1px solid var(--border-dark); border-radius: 12px; padding: 30px; }
+.editor-input { width: 100%; padding: 15px; border-radius: 8px; border: 1px solid var(--border-dark); background: var(--bg-dark); color: #fff; font-family: inherit; font-size: 14px; margin-bottom: 15px; outline: none; transition: 0.3s; }
+.editor-input:focus { border-color: var(--accent-light-blue); box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.1); }
+.btn-primary { background: linear-gradient(135deg, var(--accent-purple), var(--accent-light-blue)); color: #fff; border: none; padding: 14px 25px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; width: 100%; font-size: 15px; margin-top: 15px; }
+.btn-primary:hover { opacity: 0.9; box-shadow: 0 5px 15px rgba(0, 210, 255, 0.2); }
+
+.editor-toolbar { background: var(--border-dark); padding: 10px; border-radius: 8px 8px 0 0; display: flex; gap: 8px; flex-wrap: wrap; }
+.editor-toolbar button { background: var(--bg-dark); border: 1px solid var(--border-dark); color: var(--text-main); border-radius: 6px; padding: 6px 12px; cursor: pointer; transition: 0.2s; font-weight: 600; }
+.editor-toolbar button:hover { color: var(--accent-light-blue); border-color: var(--accent-light-blue); }
+.rich-editor-area { border: 1px solid var(--border-dark); border-radius: 0 0 8px 8px; min-height: 300px; padding: 20px; background: var(--bg-dark); color: #fff; outline: none; line-height: 1.8; }
+
+.output-section { margin-top: 20px; background: var(--bg-dark); border: 1px solid var(--border-dark); padding: 20px; border-radius: 8px; display: none; }
+.code-box { color: var(--accent-light-blue); font-family: monospace; font-size: 13px; white-space: pre-wrap; margin-bottom: 15px; }
