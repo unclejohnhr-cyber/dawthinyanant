@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin & Analytics - Daw Thin Yanant</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="css/admin-style.css">
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div class="logo-area">
+      <div class="logo-icon"><i class="ri-dashboard-3-fill"></i></div>
+      <div class="logo-text">TY Admin</div>
+    </div>
+
+    <div class="nav-label">Overview</div>
+    <ul class="nav-menu">
+      <li class="nav-item active" id="nav-analytics" onclick="switchView('analytics')"><i class="ri-bar-chart-box-line"></i> Analytics</li>
+      <li class="nav-item" id="nav-manage" onclick="switchView('manage')"><i class="ri-list-check-2"></i> Manage Posts</li>
+      <li class="nav-item" id="nav-editor" onclick="switchView('editor')"><i class="ri-edit-box-line"></i> Write New Post</li>
+    </ul>
+
+    <div class="nav-label">Management</div>
+    <ul class="nav-menu">
+      <li class="nav-item"><i class="ri-mail-unread-line"></i> Mail Box</li>
+      <li class="nav-item"><i class="ri-pie-chart-2-line"></i> RSM System</li>
+      <li class="nav-item"><i class="ri-test-tube-line"></i> Laboratory (Lab)</li>
+    </ul>
+
+    <div class="nav-label">System</div>
+    <ul class="nav-menu">
+      <li class="nav-item" onclick="window.location.href='index.html'"><i class="ri-global-line"></i> View Website</li>
+      <li class="nav-item" style="color: var(--accent-danger);" onclick="logoutAdmin()"><i class="ri-logout-box-r-line"></i> Logout</li>
+    </ul>
+  </aside>
+
+  <div class="main-wrapper">
+    
+    <div id="analyticsView">
+      <div class="page-header">
+        <h1 class="page-title">Analytics Dashboard</h1>
+        <p class="page-sub">ဝက်ဘ်ဆိုက်၏ ဝင်ရောက်ကြည့်ရှုမှု အခြေအနေများကို စောင့်ကြည့်ရန်</p>
+      </div>
+
+      <div class="analytics-stats-row">
+        <div class="stat-box">
+          <div class="stat-title">Total Published Posts <i class="ri-article-line"></i></div>
+          <div class="stat-value" id="dashTotalPosts" style="color: var(--accent-light-blue);">0</div>
+          <div class="stat-trend trend-up"><i class="ri-arrow-up-line"></i> On Website</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Page Views <i class="ri-eye-line"></i></div>
+          <div class="stat-value" style="color: var(--accent-purple);">284,392</div>
+          <div class="stat-trend trend-up"><i class="ri-arrow-up-line"></i> +24.7%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Unique Visitors <i class="ri-user-star-line"></i></div>
+          <div class="stat-value">42,847</div>
+          <div class="stat-trend trend-up"><i class="ri-arrow-up-line"></i> +12.3%</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-title">Bounce Rate <i class="ri-arrow-go-back-line"></i></div>
+          <div class="stat-value" style="color: var(--accent-danger);">32.4%</div>
+          <div class="stat-trend trend-down"><i class="ri-arrow-down-line"></i> -5.2%</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="manageView" style="display: none;">
+      <div class="page-header">
+        <h1 class="page-title">Manage Your Posts</h1>
+        <p class="page-sub">တင်ထားသော ဆောင်းပါး (<span id="managePostCount" style="color: var(--accent-light-blue); font-weight: bold;">0</span>) ပုဒ်ကို ပြန်လည်ပြင်ဆင်ရန် သို့မဟုတ် အချက်အလက်ကြည့်ရန်</p>
+      </div>
+
+      <div class="table-card">
+        <table class="data-table" id="postsTable">
+          <thead>
+            <tr>
+              <th style="width: 80px;">Cover</th>
+              <th>Post Title</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th style="text-align: right;">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="editorView" style="display: none;">
+      <div class="page-header">
+        <h1 class="page-title" id="editorMainTitle">Write New Post</h1>
+        <p class="page-sub" id="editorSubTitle">ဆောင်းပါးအသစ်ရေးရန် သို့မဟုတ် အဟောင်းကို ပြင်ဆင်ရန်</p>
+      </div>
+
+      <div class="editor-card">
+        <input type="hidden" id="editPostId" value="">
+
+        <input type="text" id="postTitle" class="editor-input" style="font-size: 18px; font-weight: 700;" placeholder="ဆောင်းပါး ခေါင်းစဉ် ရေးပါ...">
+        
+        <div style="display: flex; gap: 15px;">
+          <select id="postCategory" class="editor-input" style="width: 250px;">
+            <option value="ထုတ်ပြန်ချက်">📢 ထုတ်ပြန်ချက်</option>
+            <option value="ပညာရေး">🎓 ပညာရေး</option>
+            <option value="ဗဟုသုတ">💡 ဗဟုသုတ</option>
+            <option value="လူမှုရေး">🤝 လူမှုရေး</option>
+            <option value="ကျန်းမာရေး">⚕️ ကျန်းမာရေး</option>
+            <option value="နည်းပညာ">💻 နည်းပညာ</option>
+            <option value="စာအုပ်များ">📚 စာအုပ်များ</option>
+            <option value="Machine Learning">🤖 Machine Learning</option>
+            <option value="Predictive Analytics">📊 Predictive Analytics</option>
+            <option value="Public Policy">🏛️ Public Policy</option>
+            <option value="Lab">🔬 Laboratory (Lab)</option>
+            <option value="RSM">📈 RSM</option>
+            <option value="Mail Box">📬 Mail Box</option>
+            <option value="General">💡 General</option>
+          </select>
+          <input type="text" id="postTags" class="editor-input" placeholder="Tags (ဥပမာ - AI, Research, Lab)" style="flex: 1;">
+        </div>
+
+        <input type="url" id="driveLink" class="editor-input" placeholder="Cover Image Google Drive Link (သို့) ပုံအမည် ထည့်ပါ...">
+
+        <div class="editor-toolbar">
+          <button onclick="execCmd('bold')">B</button>
+          <button onclick="execCmd('italic')">I</button>
+          <button onclick="execCmd('underline')">U</button>
+          <button onclick="execCmd('formatBlock', 'H3')">H3</button>
+          <button onclick="execCmd('insertUnorderedList')"><i class="ri-list-unordered"></i></button>
+          <button onclick="execCmd('justifyLeft')"><i class="ri-align-left"></i></button>
+          <button onclick="execCmd('justifyCenter')"><i class="ri-align-center"></i></button>
+        </div>
+        <div class="rich-editor-area" id="postContent" contenteditable="true"></div>
+
+        <button class="btn-primary" id="generateBtn" onclick="generatePostCode()">Generate Data Code</button>
+
+        <div class="output-section" id="outputSection">
+          <h5 style="margin-bottom:10px; color:#fff;" id="outputInstruction">အောက်ပါ ကုဒ်ကို Copy ကူးပြီး `js/posts-handler.js` ထဲတွင် အသစ်ထည့်ပါ (သို့) အဟောင်းနေရာတွင် အစားထိုးပါ:</h5>
+          <div class="code-box" id="codeOutput"></div>
+          <button class="btn-primary" style="background: var(--surface-dark); border: 1px solid var(--border-dark); padding: 8px 15px; margin-top: 0; width: auto;" onclick="copyCode()">Copy Code</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="js/posts-handler.js"></script>
+
+  <script>
+
+    
+    // View Switcher
+    function switchView(view) {
+        document.getElementById('analyticsView').style.display = view === 'analytics' ? 'block' : 'none';
+        document.getElementById('manageView').style.display = view === 'manage' ? 'block' : 'none';
+        document.getElementById('editorView').style.display = view === 'editor' ? 'block' : 'none';
+        
+        document.getElementById('nav-analytics').classList.toggle('active', view === 'analytics');
+        document.getElementById('nav-manage').classList.toggle('active', view === 'manage');
+        document.getElementById('nav-editor').classList.toggle('active', view === 'editor');
+
+        // အကယ်၍ Edit mode မဟုတ်ဘဲ Editor သို့ သွားပါက Form အလွတ်ပြရန်
+        if(view === 'editor' && !document.getElementById('editPostId').value) {
+           clearEditor();
+        }
+    }
+
+    // Load Posts into Manage Section
+    function loadManagePosts() {
+        if(typeof myPosts !== 'undefined') {
+            document.getElementById('dashTotalPosts').innerText = myPosts.length;
+            document.getElementById('managePostCount').innerText = myPosts.length;
+
+            const tbody = document.querySelector('#postsTable tbody');
+            tbody.innerHTML = '';
+
+            myPosts.forEach(post => {
+                tbody.innerHTML += `
+                    <tr>
+                        <td><img src="${post.cover}" style="width: 50px; height: 50px; border-radius: 6px; object-fit: cover;"></td>
+                        <td style="font-weight: 700;">${post.title}</td>
+                        <td><span style="background: rgba(138, 43, 226, 0.2); color: #00d2ff; padding: 4px 10px; border-radius: 50px; font-size: 11px; font-weight: 600;">${post.category}</span></td>
+                        <td style="color: var(--text-muted); font-size: 12px;">${post.date}</td>
+                        <td style="text-align: right;">
+                            <button onclick="editPost('${post.id}')" style="background: var(--border-dark); color: #fff; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; font-weight: 600; transition: 0.2s;"><i class="ri-edit-2-line"></i> Edit</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
+    }
+
+    // Editor Logic
+    function execCmd(cmd, val = null) { document.execCommand(cmd, false, val); }
+
+    function extractDriveId(url) {
+        if(!url) return null;
+        const match = url.match(/\/d\/(.+?)\//) || url.match(/id=(.+?)(&|$)/);
+        return match ? match[1] : null;
+    }
+
+    function clearEditor() {
+        document.getElementById('editPostId').value = "";
+        document.getElementById('postTitle').value = "";
+        document.getElementById('postCategory').value = "Machine Learning";
+        document.getElementById('postTags').value = "";
+        document.getElementById('driveLink').value = "";
+        document.getElementById('postContent').innerHTML = "";
+        
+        document.getElementById('editorMainTitle').innerText = "Write New Post";
+        document.getElementById('editorSubTitle').innerText = "ဆောင်းပါးအသစ်ရေးရန်";
+        document.getElementById('generateBtn').innerText = "Generate Data Code";
+        document.getElementById('outputSection').style.display = 'none';
+    }
+
+    // ဆောင်းပါးကို ပြင်ဆင်ရန် Editor သို့ ဆွဲတင်ခြင်း
+    function editPost(id) {
+        const post = myPosts.find(p => p.id === id);
+        if(post) {
+            document.getElementById('editPostId').value = post.id;
+            document.getElementById('postTitle').value = post.title;
+            document.getElementById('postCategory').value = post.category;
+            document.getElementById('postTags').value = post.tags || "";
+            document.getElementById('driveLink').value = post.cover;
+            document.getElementById('postContent').innerHTML = post.content;
+
+            document.getElementById('editorMainTitle').innerText = "Edit Post";
+            document.getElementById('editorMainTitle').style.color = "var(--accent-light-blue)";
+            document.getElementById('editorSubTitle').innerText = "ရွေးချယ်ထားသော ဆောင်းပါးအား ပြင်ဆင်နေပါသည်...";
+            document.getElementById('generateBtn').innerText = "Generate Updated Code";
+            document.getElementById('outputSection').style.display = 'none';
+
+            switchView('editor');
+            window.scrollTo(0, 0);
+        }
+    }
+
+    function generatePostCode() {
+      const editingId = document.getElementById('editPostId').value;
+      const title = document.getElementById('postTitle').value;
+      const category = document.getElementById('postCategory').value;
+      const tags = document.getElementById('postTags').value;
+      let driveUrl = document.getElementById('driveLink').value.trim();
+      const contentHTML = document.getElementById('postContent').innerHTML;
+      const contentText = document.getElementById('postContent').innerText;
+      
+      if(!title || !driveUrl || !contentText.trim()) {
+          return alert("ခေါင်းစဉ်၊ Cover ပုံလင့်ခ် နှင့် အကြောင်းအရာတို့ကို ပြည့်စုံစွာ ဖြည့်ပါ!");
+      }
+
+      let driveId = extractDriveId(driveUrl);
+      let finalCoverUrl = driveId ? `https://drive.google.com/uc?export=view&id=${driveId}` : driveUrl;
+      const dateStr = new Date().toLocaleDateString('en-US', { year:'numeric', month:'short', day:'numeric' });
+      const cleanHTML = contentHTML.replace(/"/g, "'").replace(/\n/g, "");
+
+      // Edit လုပ်နေခြင်းဆိုလျှင် ID အဟောင်းကိုသုံးမည်၊ အသစ်ဆိုလျှင် ID အသစ်ဖန်တီးမည်
+      const finalId = editingId ? editingId : Date.now();
+
+      const code = `{
+  "id": "${finalId}",
+  "title": "${title}",
+  "category": "${category}",
+  "tags": "${tags}",
+  "cover": "${finalCoverUrl}",
+  "excerpt": "${contentText.substring(0, 120).replace(/\n/g, ' ')}...",
+  "content": "${cleanHTML}",
+  "date": "${dateStr}"
+},`;
+
+      document.getElementById('codeOutput').innerText = code;
+      
+      if(editingId) {
+          document.getElementById('outputInstruction').innerHTML = `<span style="color:var(--accent-danger);">သတိပြုရန်:</span> အောက်ပါကုဒ်ကို Copy ကူးပြီး <b>posts-handler.js</b> ထဲရှိ သင်ပြင်ဆင်လိုက်သော <b>${title}</b> ဆောင်းပါးအဟောင်းနေရာတွင် အစားထိုးပါ!`;
+      } else {
+          document.getElementById('outputInstruction').innerText = `အောက်ပါ ကုဒ်ကို Copy ကူးပြီး js/posts-handler.js ထဲရှိ myPosts အကွင်းထဲတွင် အသစ်ထည့်ပါ:`;
+      }
+
+      document.getElementById('outputSection').style.display = 'block';
+    }
+
+    function copyCode() {
+      const text = document.getElementById('codeOutput').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+          alert("ကုဒ်ကို Copy ကူးယူပြီးပါပြီ။ js/posts-handler.js ဖိုင်ထဲတွင် သွားရောက် ထည့်သွင်း/အစားထိုး ပါ။");
+      });
+    }
+
+    // Page Load ဖြစ်ချိန်တွင် ဒေတာများ ဆွဲတင်ရန်
+    document.addEventListener('DOMContentLoaded', loadManagePosts);
+
+    function logoutAdmin() {
+        alert("Logged out securely.");
+        window.location.href = "login.html";
+    }
+  </script>
+</body>
+</html>

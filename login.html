@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login - Daw Thin Yanant</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Pyidaungsu:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  
+  <style>
+    :root {
+      --bg: #0d0d0f; --surface: #16161a; --border: #2a2a35;
+      --accent: #6f42c1; --text: #e8e8f0; --muted: #8888aa;
+    }
+    body { background: var(--bg); color: var(--text); font-family: 'Pyidaungsu', 'Montserrat', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .login-card { background: var(--surface); padding: 40px; border-radius: 14px; border: 1px solid var(--border); width: 100%; max-width: 400px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+    .logo-icon { width: 50px; height: 50px; background: linear-gradient(135deg, #6f42c1, #4b2354); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 24px; color: white; margin: 0 auto 20px; }
+    .input-group { margin-bottom: 20px; text-align: left; }
+    .input-group label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+    .form-control { width: 100%; background: var(--bg); border: 1px solid var(--border); color: white; padding: 12px 15px; border-radius: 8px; outline: none; font-size: 14px; box-sizing: border-box; }
+    .form-control:focus { border-color: var(--accent); }
+    .btn-login { width: 100%; background: var(--accent); color: white; border: none; padding: 14px; border-radius: 8px; font-weight: 700; cursor: pointer; transition: 0.3s; margin-top: 10px; }
+    .btn-login:hover { background: #5a32a3; }
+    .error-msg { color: #e05c5c; font-size: 13px; margin-top: 15px; display: none; }
+  </style>
+</head>
+<body>
+
+  <div class="login-card">
+    <div class="logo-icon">T</div>
+    <h3 style="font-family: 'Montserrat', sans-serif; font-weight: 800; margin-bottom: 5px;">Welcome Back</h3>
+    <p style="color: var(--muted); font-size: 13px; margin-bottom: 30px;">Daw Thin Yanant Blog Admin</p>
+
+    <div class="input-group">
+      <label>Email Address</label>
+      <input type="email" id="email" class="form-control" placeholder="thinyanant@uit.edu.mm">
+    </div>
+    <div class="input-group">
+      <label>Password</label>
+      <input type="password" id="password" class="form-control" placeholder="••••••••">
+    </div>
+
+    <button class="btn-login" id="loginBtn">Secure Login</button>
+    <div id="errorMsg" class="error-msg">အီးမေးလ် သို့မဟုတ် စကားဝှက် မှားယွင်းနေပါသည်။</div>
+    
+    <div style="margin-top: 20px;">
+        <a href="index.html" style="color: var(--muted); font-size: 12px; text-decoration: none;"><i class="ri-arrow-left-line align-middle"></i> Back to Website</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      // သင်၏ အမှန်တကယ် Firebase Config များကို ဒီနေရာတွင် အစားထိုးပါ
+      apiKey: "AIzaSyDbPSynPV5hxw7dbLHry05dfNEi-jkj9qs",
+      authDomain: "thinyanantweb.firebaseapp.com",
+      projectId: "thinyanantweb",
+      storageBucket: "thinyanantweb.firebasestorage.app",
+      messagingSenderId: "1059431248871",
+      appId: "1:1059431248871:web:a4392d819fc97b7a63c342"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    onAuthStateChanged(auth, (user) => {
+      if (user) window.location.href = "admin.html";
+    });
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      const btn = document.getElementById('loginBtn');
+      const err = document.getElementById('errorMsg');
+      
+      if(!email || !pass) return;
+
+      btn.innerText = "Authenticating...";
+      try {
+        await signInWithEmailAndPassword(auth, email, pass);
+        window.location.href = "admin.html";
+      } catch (error) {
+        err.style.display = "block";
+        btn.innerText = "Secure Login";
+      }
+    });
+  </script>
+</body>
+</html>

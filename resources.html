@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="my">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Resource Center - Daw Thin Yanant</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+
+  <style>
+    /* Official Government Style UI Colors */
+    :root {
+      --primary-color: #4b2354; 
+      --secondary-color: #6f42c1; 
+      --bg-white: #ffffff;
+      --bg-light: #f4f6f9; 
+      --text-dark: #2c3338;
+      --text-muted: #6c757d;
+      --border-color: #e1e5eb;
+    }
+
+    body { 
+        font-family: "Georgia", "Pyidaungsu", serif; 
+        color: var(--text-dark); 
+        background-color: var(--bg-light); 
+        line-height: 1.8;
+        font-size: 1.05rem;
+    }
+
+    h1, h2, h3, h4, h5, h6 { color: var(--primary-color); font-weight: 700; }
+
+    /* Navbar */
+    .header-area { 
+        background: var(--bg-white); 
+        padding: 15px 0; 
+        position: sticky; 
+        top: 0; 
+        z-index: 1000;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        border-bottom: 1px solid var(--border-color);
+    }
+    .navbar-brand { font-weight: 800; font-size: 1.4rem; color: var(--primary-color) !important; letter-spacing: 0.5px; }
+    .nav-link { font-size: 0.95rem; font-weight: 600; color: var(--text-dark) !important; margin: 0 10px; transition: 0.3s; }
+    .nav-link:hover { color: var(--secondary-color) !important; }
+
+    /* Hero Header */
+    .resource-header { 
+      padding: 60px 0; 
+      background: linear-gradient(rgba(75, 35, 84, 0.9), rgba(75, 35, 84, 0.9)), url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1350&q=80'); 
+      background-size: cover; background-position: center; color: white; text-align: center; 
+    }
+
+    /* Main Tabs Styling */
+    .main-tabs { border-bottom: 2px solid var(--border-color); margin-bottom: 30px; justify-content: center; }
+    .main-tabs .nav-link { 
+        color: var(--text-muted) !important; font-size: 1.1rem; font-weight: 700; 
+        border: none; border-bottom: 3px solid transparent; border-radius: 0; padding: 12px 25px; 
+    }
+    .main-tabs .nav-link:hover { color: var(--secondary-color) !important; }
+    .main-tabs .nav-link.active { color: var(--primary-color) !important; border-bottom: 3px solid var(--primary-color); background: transparent; }
+
+    /* Inner Pills (E-Book Categories) */
+    .nav-pills .nav-link { color: var(--primary-color); background: var(--bg-white); border: 1px solid var(--border-color); margin: 5px; border-radius: 50px; font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+    .nav-pills .nav-link.active { background: var(--primary-color); color: white; border-color: var(--primary-color); }
+
+    /* Cards Styling */
+    .book-card, .ministry-card { 
+      background: var(--bg-white); border-radius: 8px; padding: 25px; transition: 0.3s; 
+      border: 1px solid var(--border-color); box-shadow: 0 2px 5px rgba(0,0,0,0.02); height: 100%;
+    }
+    .book-card { border-left: 4px solid var(--secondary-color); }
+    .ministry-card { border-top: 4px solid var(--primary-color); margin-bottom: 30px; }
+    
+    .book-card:hover, .ministry-card:hover { transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,0.08); border-color: #cbd3da; }
+    
+    .book-card h5, .ministry-title { color: var(--primary-color); font-weight: 700; margin-bottom: 15px; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+    
+    /* E-Book List */
+    .book-card ul { list-style: none; padding: 0; margin: 0; }
+    .book-card ul li { font-size: 0.95rem; margin-bottom: 12px; color: var(--text-dark); display: flex; align-items: flex-start; gap: 10px; }
+    .book-card ul li i { color: var(--secondary-color); font-size: 1.1rem; margin-top: 3px; }
+
+    /* Govt Links Items */
+    .dept-item { background: var(--bg-light); padding: 10px 15px; border-radius: 6px; margin-bottom: 10px; border-left: 3px solid var(--secondary-color); display: flex; align-items: center; justify-content: space-between; transition: 0.2s; }
+    .dept-item:hover { background: #eaedf2; transform: translateX(5px); }
+    .dept-item a { text-decoration: none; color: var(--text-dark); font-weight: 600; font-size: 0.95rem; flex-grow: 1; }
+    .dept-item i { color: var(--secondary-color); font-size: 1.1rem; }
+
+    /* Search Input */
+    .search-container { max-width: 600px; margin: 0 auto 30px; }
+    .search-input { border-radius: 50px; padding: 12px 25px; border: 1px solid var(--border-color); box-shadow: 0 4px 10px rgba(0,0,0,0.05); font-size: 1rem; outline: none; }
+    .search-input:focus { border-color: var(--secondary-color); box-shadow: 0 4px 15px rgba(111, 66, 193, 0.15); }
+
+    footer { background-color: var(--primary-color); color: white; text-align: center; padding: 20px 0; font-size: 0.9rem; margin-top: 50px;}
+  </style>
+</head>
+
+<body>
+
+  <header class="header-area">
+    <div class="container d-flex align-items-center justify-content-between">
+      <a href="index.html" class="navbar-brand">DAW THIN YANANT</a>
+      <nav class="d-none d-lg-block">
+        <a href="index.html" class="nav-link d-inline-block">ပင်မစာမျက်နှာ</a>
+        <a href="#" class="nav-link d-inline-block text-primary">အရင်းအမြစ်များ (Resources)</a>
+        <a href="blog.html" class="nav-link d-inline-block">စာတမ်းများ (Blog)</a>
+      </nav>
+    </div>
+  </header>
+
+  <header class="resource-header">
+    <div class="container" data-aos="fade-down">
+      <h1 class="text-white">Resource Center</h1>
+      <p class="mt-2 text-light">သုတေသနစာအုပ်များ၊ ဒေတာများနှင့် အစိုးရဌာနဆိုင်ရာ လင့်ခ်များ စုစည်းမှု</p>
+    </div>
+  </header>
+
+  <main class="container py-5">
+    
+    <ul class="nav nav-tabs main-tabs" id="resourceTabs" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="ebook-tab" data-bs-toggle="tab" data-bs-target="#ebook" type="button" role="tab"><i class="ri-book-read-line align-middle"></i> E-Book Lab</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="gov-tab" data-bs-toggle="tab" data-bs-target="#gov" type="button" role="tab"><i class="ri-government-line align-middle"></i> အစိုးရ ဝက်ဘ်ဆိုက်များ</button>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="resourceTabsContent">
+      
+      <div class="tab-pane fade show active" id="ebook" role="tabpanel">
+          
+        <ul class="nav nav-pills justify-content-center mb-4" id="pills-tab" role="tablist">
+          <li class="nav-item"><button class="nav-link active" data-bs-toggle="pill" data-bs-target="#politics" type="button">နိုင်ငံရေးနှင့် အုပ်ချုပ်ရေး</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#academic" type="button">သုတေသနနှင့် ပညာရေး</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#data-ai" type="button">ဒေတာနှင့် AI</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="pill" data-bs-target="#digital-mkt" type="button">ဒစ်ဂျစ်တယ် စျေးကွက်</button></li>
+        </ul>
+
+        <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="politics" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6" data-aos="fade-up">
+                <div class="book-card">
+                  <h5>နိုင်ငံရေးနှင့် အုပ်ချုပ်ရေးလေ့လာမှုများ</h5>
+                  <ul>
+                    <li><i class="ri-government-line"></i> ဒီမိုကရေစီနှင့် နိုင်ငံရေးစနစ်များ</li>
+                    <li><i class="ri-scales-3-line"></i> အုပ်ချုပ်ရေးယန္တရားနှင့် မူဝါဒဖော်ဆောင်မှု</li>
+                    <li><i class="ri-global-line"></i> နိုင်ငံတကာဆက်ဆံရေး အခြေခံမူများ</li>
+                    <li><i class="ri-map-pin-user-line"></i> ဒေသန္တရအုပ်ချုပ်ရေးနှင့် ဖွံ့ဖြိုးတိုးတက်မှု</li>
+                    <li><i class="ri-book-mark-line"></i> နိုင်ငံရေးသီအိုရီများ လက်စွဲ</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="book-card">
+                  <h5>ဒီဂျစ်တယ်နိုင်ငံရေးနှင့် မဟာဗျူဟာ</h5>
+                  <ul>
+                    <li><i class="ri-broadcast-line"></i> ဒီဂျစ်တယ်ခေတ် နိုင်ငံရေးဆက်သွယ်မှု <span class="badge bg-danger ms-2">New</span></li>
+                    <li><i class="ri-user-star-line"></i> ပြည်သူ့နီတိနှင့် နိုင်ငံသားအခွင့်အရေး</li>
+                    <li><i class="ri-hand-heart-line"></i> ငြိမ်းချမ်းရေးနှင့် ပဋိပက္ခဖြေရှင်းနည်းများ</li>
+                    <li><i class="ri-community-line"></i> အစိုးရနှင့် ပြည်သူ့ဆက်ဆံရေး</li>
+                    <li><i class="ri-line-chart-line"></i> နိုင်ငံရေးဆိုင်ရာ ဒေတာခွဲခြမ်းစိတ်ဖြာမှု</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="academic" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="book-card">
+                  <h5>သုတေသနနှင့် ပညာရေး လမ်းညွှန်စာအုပ်များ</h5>
+                  <ul>
+                    <li><i class="ri-microscope-line"></i> သုတေသနနည်းလမ်းများ (Research Methodology)</li>
+                    <li><i class="ri-file-edit-line"></i> Thesis / Dissertation ရေးသားနည်း</li>
+                    <li><i class="ri-graduation-cap-line"></i> PhD / Master သုတေသန လမ်းညွှန်</li>
+                    <li><i class="ri-quill-pen-line"></i> Academic Writing နှင့် Citation</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="book-card">
+                  <h5>သင်ကြားရေးနှင့် ပညာပေး eBook များ</h5>
+                  <ul>
+                    <li><i class="ri-presentation-line"></i> Lecturer / Tutor လမ်းညွှန်</li>
+                    <li><i class="ri-layout-grid-line"></i> သင်ကြားရေး Module များ</li>
+                    <li><i class="ri-briefcase-4-line"></i> Workshop & Training Manuals</li>
+                    <li><i class="ri-book-open-line"></i> Curriculum Development Guide</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="data-ai" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-6">
+                <div class="book-card">
+                  <h5>ဒေတာခွဲခြမ်းစိတ်ဖြာမှု နှင့် AI</h5>
+                  <ul>
+                    <li><i class="ri-bar-chart-2-line"></i> Data Analysis အခြေခံ</li>
+                    <li><i class="ri-database-2-line"></i> Statistical Analysis (SPSS, R, Python)</li>
+                    <li><i class="ri-pie-chart-line"></i> Predictive Analytics</li>
+                    <li><i class="ri-robot-line"></i> Machine Learning အခြေခံ</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="book-card">
+                  <h5>စီးပွားရေး အချက်အလက်နှင့် BI</h5>
+                  <ul>
+                    <li><i class="ri-lightbulb-line"></i> Business Intelligence အခြေခံ</li>
+                    <li><i class="ri-mind-map"></i> Decision Support Systems</li>
+                    <li><i class="ri-compass-3-line"></i> Data-driven Strategy</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="digital-mkt" role="tabpanel">
+            <div class="row g-4">
+              <div class="col-md-12">
+                <div class="book-card">
+                  <h5>လူမှုမီဒီယာနှင့် ဒစ်ဂျစ်တယ် စျေးကွက်</h5>
+                  <div class="row mt-2">
+                    <div class="col-md-6">
+                      <ul>
+                        <li><i class="ri-facebook-circle-line"></i> Social Media Marketing အခြေခံ</li>
+                        <li><i class="ri-megaphone-line"></i> Message Campaigning Strategy</li>
+                        <li><i class="ri-group-line"></i> Audience Segmentation နည်းလမ်းများ</li>
+                      </ul>
+                    </div>
+                    <div class="col-md-6">
+                      <ul>
+                        <li><i class="ri-heart-pulse-line"></i> Sentiment Analysis</li>
+                        <li><i class="ri-vip-diamond-line"></i> Digital Branding နှင့် Online Influence</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-4 g-4">
+          <div class="col-lg-8">
+            <div class="book-card border-0 shadow-sm" style="background-color: var(--bg-white);">
+              <h5 class="border-0 text-dark">အထူးအမျိုးအစား (Featured Collections)</h5>
+              <div class="row mt-3">
+                <div class="col-md-6">
+                  <ul>
+                    <li><i class="ri-star-line"></i> ဒေါ်သင်းရနံ့ ရေးသားသော စာအုပ်များ</li>
+                    <li><i class="ri-heart-line"></i> PhD Student များအတွက် အကြံပြုချက်များ</li>
+                  </ul>
+                </div>
+                <div class="col-md-6">
+                  <ul>
+                    <li><i class="ri-lock-unlock-line"></i> အခမဲ့ eBook များ (Open Access)</li>
+                    <li><i class="ri-fire-line"></i> လူကြိုက်များဆုံး Academic eBook များ</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="book-card border-0 shadow-sm" style="background-color: var(--bg-white);">
+              <h5 class="border-0 text-dark">ကိုးကားစာအုပ်များ</h5>
+              <ul>
+                <li><i class="ri-list-check"></i> Research Checklists</li>
+                <li><i class="ri-double-quotes-l"></i> Referencing Templates</li>
+                <li><i class="ri-tools-line"></i> Data Collection Tools</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="gov" role="tabpanel">
+        
+        <div class="search-container text-center">
+            <input type="text" id="deptSearch" class="form-control search-input w-100" placeholder="ဌာနအမည် သို့မဟုတ် ဝန်ကြီးဌာနဖြင့် ရှာဖွေပါ..." onkeyup="filterLinks()">
+        </div>
+
+        <div class="row" id="linksContainer">
+          
+          <div class="col-lg-12 ministry-box">
+            <div class="ministry-card">
+              <h5 class="ministry-title">နိုင်ငံတော်အဆင့် အဖွဲ့အစည်းများနှင့် လွှတ်တော်များ</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="dept-item"><a href="http://www.sacoffice.gov.mm" target="_blank">အမျိုးသားကာကွယ်ရေးနှင့်လုံခြုံရေးကောင်စီရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.pyidaungsu.hluttaw.mm" target="_blank">ပြည်ထောင်စုလွှတ်တော်</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://pyithu.hluttaw.mm" target="_blank">ပြည်သူ့လွှတ်တော်</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.amyotha.hluttaw.mm" target="_blank">အမျိုးသားလွှတ်တော်</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.unionsupremecourt.gov.mm" target="_blank">ပြည်ထောင်စုတရားလွှတ်တော်ချုပ်ရုံး</a><i class="ri-external-link-line"></i></div>
+                </div>
+                <div class="col-md-6">
+                  <div class="dept-item"><a href="http://www.constitutionaltribunal.gov.mm" target="_blank">နိုင်ငံတော်ဖွဲ့စည်းပုံအခြေခံဥပဒေဆိုင်ရာခုံရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.uec.gov.mm" target="_blank">ပြည်ထောင်စုရွေးကောက်ပွဲကော်မရှင်</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.oagmac.gov.mm" target="_blank">ပြည်ထောင်စုစာရင်းစစ်ချုပ်ရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.ucsb.gov.mm" target="_blank">ပြည်ထောင်စုရာထူးဝန်အဖွဲ့</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.cbm.gov.mm" target="_blank">မြန်မာနိုင်ငံတော်ဗဟိုဘဏ်</a><i class="ri-external-link-line"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 ministry-box">
+            <div class="ministry-card">
+              <h5 class="ministry-title">ပို့ဆောင်ရေးနှင့် ဆက်သွယ်ရေးဝန်ကြီးဌာန</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="dept-item"><a href="http://www.motc.gov.mm" target="_blank">ပြည်ထောင်စုဝန်ကြီးရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.dotp.gov.mm" target="_blank">ပို့ဆောင်ရေးစီမံကိန်းဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.rtad.gov.mm" target="_blank">ကုန်းလမ်းပို့ဆောင်ရေးညွှန်ကြားမှုဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://dma.gov.mm" target="_blank">ရေကြောင်းပို့ဆောင်ရေးညွှန်ကြားမှုဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.dca.gov.mm" target="_blank">လေကြောင်းပို့ဆောင်ရေးညွှန်ကြားမှုဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                </div>
+                <div class="col-md-6">
+                  <div class="dept-item"><a href="http://www.ptd.gov.mm" target="_blank">ဆက်သွယ်ရေးညွှန်ကြားမှုဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.ncsc.gov.mm" target="_blank">နည်းပညာနှင့်ဆိုက်ဘာလုံခြုံရေးဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.mpt.com.mm" target="_blank">မြန်မာ့ဆက်သွယ်ရေးလုပ်ငန်း</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.myanmarpost.com.mm" target="_blank">မြန်မာ့စာတိုက်လုပ်ငန်း</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.railways.gov.mm" target="_blank">မြန်မာ့မီးရထား</a><i class="ri-external-link-line"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 ministry-box">
+            <div class="ministry-card">
+              <h5 class="ministry-title">စိုက်ပျိုးရေး၊ သယံဇာတနှင့် သဘာဝပတ်ဝန်းကျင်</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="fw-bold mb-2 text-dark">စိုက်ပျိုးရေး၊ မွေးမြူရေးနှင့် ဆည်မြောင်း</p>
+                  <div class="dept-item"><a href="http://www.moali.gov.mm" target="_blank">ပြည်ထောင်စုဝန်ကြီးရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.doa.gov.mm" target="_blank">စိုက်ပျိုးရေးဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.iwumd.gov.mm" target="_blank">ဆည်မြောင်းနှင့် ရေအသုံးချမှု</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.dof.gov.mm" target="_blank">ငါးလုပ်ငန်းဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                </div>
+                <div class="col-md-6">
+                  <p class="fw-bold mb-2 text-dark">သယံဇာတနှင့် သဘာဝပတ်ဝန်းကျင်</p>
+                  <div class="dept-item"><a href="http://www.monrec.gov.mm" target="_blank">ပြည်ထောင်စုဝန်ကြီးရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.forestdepartment.gov.mm" target="_blank">သစ်တောဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.ecd.gov.mm" target="_blank">ပတ်ဝန်းကျင်ထိန်းသိမ်းရေး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.mining.gov.mm" target="_blank">သတ္တုတွင်းဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 ministry-box">
+            <div class="ministry-card">
+              <h5 class="ministry-title">ဘဏ္ဍာရေး၊ စီးပွားရေးနှင့် ကူးသန်းရောင်းဝယ်ရေး</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <p class="fw-bold mb-2 text-dark">ဘဏ္ဍာရေးနှင့် အခွန်ဝန်ကြီးဌာန</p>
+                  <div class="dept-item"><a href="http://www.mofr.gov.mm" target="_blank">ပြည်ထောင်စုဝန်ကြီးရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.ird.gov.mm" target="_blank">ပြည်တွင်းအခွန်များဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.customs.gov.mm" target="_blank">အကောက်ခွန်ဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="https://treasury.gov.mm" target="_blank">ငွေတိုက်ဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                </div>
+                <div class="col-md-6">
+                  <p class="fw-bold mb-2 text-dark">စီးပွားရေးနှင့် ကူးသန်းရောင်းဝယ်ရေး</p>
+                  <div class="dept-item"><a href="http://www.commerce.gov.mm" target="_blank">ပြည်ထောင်စုဝန်ကြီးရုံး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.myanmartradeportal.gov.mm" target="_blank">ကုန်သွယ်ရေးဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.doca.gov.mm" target="_blank">စားသုံးသူရေးရာဦးစီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.dica.gov.mm" target="_blank">ရင်းနှီးမြှုပ်နှံမှုနှင့် ကုမ္ပဏီများ</a><i class="ri-external-link-line"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 ministry-box">
+            <div class="ministry-card">
+              <h5 class="ministry-title">ပညာရေး၊ ကျန်းမာရေးနှင့် လူမှုဝန်ထမ်းဝန်ကြီးဌာနများ</h5>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="dept-item"><a href="http://www.moe.gov.mm" target="_blank">ပညာရေးဝန်ကြီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.moh.gov.mm" target="_blank">ကျန်းမာရေးဝန်ကြီးဌာန</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.most.gov.mm" target="_blank">သိပ္ပံနှင့် နည်းပညာဝန်ကြီးဌာန</a><i class="ri-external-link-line"></i></div>
+                </div>
+                <div class="col-md-6">
+                  <div class="dept-item"><a href="http://www.moswrr.gov.mm" target="_blank">လူမှုဝန်ထမ်း၊ ကယ်ဆယ်ရေး</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="http://www.mosya.gov.mm" target="_blank">အားကစားနှင့် လူငယ်ရေးရာ</a><i class="ri-external-link-line"></i></div>
+                  <div class="dept-item"><a href="https://tourism.gov.mm" target="_blank">ဟိုတယ်နှင့် ခရီးသွားလာရေး</a><i class="ri-external-link-line"></i></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-12 ministry-box">
+            <div class="ministry-card">
+              <h5 class="ministry-title">တိုင်းဒေသကြီးနှင့် ပြည်နယ်အစိုးရအဖွဲ့များ</h5>
+              <div class="row text-center">
+                <div class="col-md-4">
+                  <div class="dept-item"><a href="http://www.yangon.gov.mm" target="_blank">ရန်ကုန်တိုင်းဒေသကြီး</a></div>
+                  <div class="dept-item"><a href="http://www.emandalay.gov.mm" target="_blank">မန္တလေးတိုင်းဒေသကြီး</a></div>
+                  <div class="dept-item"><a href="http://www.sagaingregion.gov.mm" target="_blank">စစ်ကိုင်းတိုင်းဒေသကြီး</a></div>
+                  <div class="dept-item"><a href="http://www.bagoregion.gov.mm" target="_blank">ပဲခူးတိုင်းဒေသကြီး</a></div>
+                </div>
+                <div class="col-md-4">
+                  <div class="dept-item"><a href="http://www.kachinstate.gov.mm" target="_blank">ကချင်ပြည်နယ်</a></div>
+                  <div class="dept-item"><a href="http://www.kayahstate.gov.mm" target="_blank">ကယားပြည်နယ်</a></div>
+                  <div class="dept-item"><a href="http://www.kayinstate.gov.mm" target="_blank">ကရင်ပြည်နယ်</a></div>
+                  <div class="dept-item"><a href="http://www.monstate.gov.mm" target="_blank">မွန်ပြည်နယ်</a></div>
+                </div>
+                <div class="col-md-4">
+                  <div class="dept-item"><a href="http://www.shanstate.gov.mm" target="_blank">ရှမ်းပြည်နယ်</a></div>
+                  <div class="dept-item"><a href="http://www.ayeyarwadyregion.gov.mm" target="_blank">ဧရာဝတီတိုင်းဒေသကြီး</a></div>
+                  <div class="dept-item"><a href="http://www.ycdc.gov.mm" target="_blank">ရန်ကုန်မြို့တော်စည်ပင်</a></div>
+                  <div class="dept-item"><a href="http://www.emcdc.com" target="_blank">မန္တလေးမြို့တော်စည်ပင်</a></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p class="mb-0">&copy; 2026 Daw Thin Yanant. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    // Government Links Filter Logic
+    function filterLinks() {
+      var input = document.getElementById('deptSearch').value.toLowerCase();
+      var boxes = document.getElementsByClassName('ministry-box');
+      for (var i = 0; i < boxes.length; i++) {
+        var text = boxes[i].innerText.toLowerCase();
+        boxes[i].style.display = text.includes(input) ? "block" : "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

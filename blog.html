@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="my">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Blog Portal - Daw Thin Yanant</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+
+  <style>
+    :root {
+      --primary-purple: #4b2354;
+      --accent-purple: #6f42c1;
+      --light-bg: #f4f7f6;
+    }
+
+    body { font-family: "Pyidaungsu", "Open Sans", sans-serif; background-color: var(--light-bg); color: #444; }
+
+    /* Hero Section */
+    .hero-purple { 
+      background: linear-gradient(rgba(75, 35, 84, 0.85), rgba(75, 35, 84, 0.85)), url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1350&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 60px 0;
+      text-align: center;
+      color: white;
+    }
+
+    .profile-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 15px;
+      object-fit: cover;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .hero-purple h1 { font-size: 28px; font-weight: 700; margin-bottom: 5px; }
+    .hero-purple p { font-size: 16px; font-style: italic; opacity: 0.9; }
+
+    /* Search Box */
+    .search-container { max-width: 500px; margin: -25px auto 20px; position: relative; z-index: 10; }
+    .search-input { border-radius: 50px; padding: 12px 25px; border: none; box-shadow: 0 4px 15px rgba(0,0,0,0.1); font-weight: 600; outline: none; }
+    .search-input:focus { border: 2px solid var(--accent-purple); }
+
+    /* Category Nav (Sticky & Scrollable on Mobile) */
+    .category-nav-wrapper { background: white; border-bottom: 3px solid var(--accent-purple); padding: 10px 0; position: sticky; top: 0; z-index: 999; }
+    .nav-category { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+    @media (max-width: 768px) {
+        .nav-category { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 10px; }
+    }
+    
+    .cat-item { text-align: center; color: #444; cursor: pointer; text-decoration: none; transition: 0.3s; padding: 5px 10px; min-width: 80px; }
+    .cat-item i { display: block; font-size: 22px; color: var(--accent-purple); margin-bottom: 3px; }
+    .cat-item span { font-size: 11px; font-weight: 700; display: block; white-space: nowrap; }
+    .cat-item:hover, .cat-item.active { color: var(--accent-purple); transform: translateY(-3px); }
+
+    /* Blog Card Style */
+    .blog-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); transition: 0.3s; height: 100%; display: flex; flex-direction: column; }
+    .blog-card:hover { transform: translateY(-8px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+    .blog-card img { width: 100%; height: 160px; object-fit: cover; border-bottom: 1px solid #f0f0f0; }
+    .blog-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
+    
+    .badge-cat { background: var(--accent-purple); color: white; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-bottom: 10px; display: inline-block; width: fit-content; }
+    .blog-content h5 { font-size: 15px; font-weight: 700; color: #333; margin-bottom: 8px; line-height: 1.5; }
+    .blog-content p { font-size: 12px; color: #777; margin-bottom: 15px; line-height: 1.6; }
+    
+    .btn-read { background: var(--accent-purple); color: white; width: 100%; border-radius: 6px; padding: 10px; font-size: 13px; font-weight: 700; border: none; text-decoration: none; text-align: center; margin-top: auto; display: block; transition: 0.3s; }
+    .btn-read:hover { background: var(--primary-purple); color: white; }
+
+    /* TOC Section */
+    .toc-section { background: white; border-radius: 12px; padding: 30px; margin-top: 50px; border-top: 5px solid var(--accent-purple); box-shadow: 0 5px 20px rgba(0,0,0,0.05); }
+    .toc-title { font-weight: 800; margin-bottom: 20px; color: var(--primary-purple); font-size: 18px; display: flex; align-items: center; gap: 8px; }
+    .toc-list { column-count: 2; list-style: none; padding: 0; margin: 0; }
+    @media (max-width: 768px) { .toc-list { column-count: 1; } }
+    .toc-list li a { text-decoration: none; color: #555; font-size: 14px; font-weight: 600; transition: 0.3s; display: block; padding: 8px 0; border-bottom: 1px dashed #e0e0e0; }
+    .toc-list li a:hover { color: var(--accent-purple); padding-left: 5px; }
+
+    /* Footer */
+    #footer { background: #fff; padding: 0 0 30px 0; color: #444; font-size: 14px; border-top: 1px solid #eef0ef; margin-top: 50px; }
+    #footer .footer-top { padding: 60px 0 30px 0; background: #f9f9f9; }
+    #footer .footer-newsletter form { margin-top: 20px; background: #fff; padding: 6px 10px; position: relative; border-radius: 50px; border: 1px solid #e1ebe7; display: flex; }
+    #footer .footer-newsletter form input[type="email"] { border: 0; padding: 4px 10px; flex-grow: 1; border-radius: 50px; outline: none; font-size: 13px; }
+    #footer .footer-newsletter form input[type="submit"] { border: 0; background: var(--accent-purple); color: #fff; border-radius: 50px; padding: 0 20px; font-weight: 700; transition: 0.3s; cursor: pointer; }
+    .social-links a { font-size: 18px; display: inline-block; background: var(--accent-purple); color: #fff; line-height: 1; padding: 8px 0; margin: 0 5px; border-radius: 50%; text-align: center; width: 36px; height: 36px; transition: 0.3s; text-decoration: none; }
+    .social-links a:hover { background: var(--primary-purple); transform: translateY(-3px); }
+  </style>
+</head>
+
+<body>
+
+  <header class="hero-purple">
+    <div class="container" data-aos="zoom-in">
+      <img src="https://69a88e8c62aea864bacd7a58.imgix.net/data/ty.jpg" class="profile-img" alt="Daw Thin Yanant">
+      <h1>Daw Thin Yanant's Blog</h1>
+      <p>"သုတေသနနှင့် နည်းပညာဖြင့် အနာဂတ်ကို တည်ဆောက်မည်"</p>
+    </div>
+  </header>
+
+  <div class="container search-container" data-aos="fade-up">
+    <input type="text" id="searchInput" class="form-control search-input" placeholder="ဆောင်းပါးခေါင်းစဉ် ရှာဖွေပါ..." onkeyup="searchBlog()">
+  </div>
+
+  <div class="category-nav-wrapper shadow-sm">
+    <div class="container">
+      <div class="nav-category">
+        <a class="cat-item active" onclick="filterBlog('all', this)"><i class="ri-home-4-line"></i><span>All</span></a>
+        <a class="cat-item" onclick="filterBlog('ထုတ်ပြန်ချက်', this)"><i class="ri-megaphone-line"></i><span>ထုတ်ပြန်ချက်</span></a>
+        <a class="cat-item" onclick="filterBlog('ပညာရေး', this)"><i class="ri-graduation-cap-line"></i><span>ပညာရေး</span></a>
+        <a class="cat-item" onclick="filterBlog('ဗဟုသုတ', this)"><i class="ri-lightbulb-line"></i><span>ဗဟုသုတ</span></a>
+        <a class="cat-item" onclick="filterBlog('လူမှုရေး', this)"><i class="ri-team-line"></i><span>လူမှုရေး</span></a>
+        <a class="cat-item" onclick="filterBlog('ကျန်းမာရေး', this)"><i class="ri-heart-pulse-line"></i><span>ကျန်းမာရေး</span></a>
+        <a class="cat-item" onclick="filterBlog('နည်းပညာ', this)"><i class="ri-computer-line"></i><span>နည်းပညာ</span></a>
+        <a class="cat-item" onclick="filterBlog('စာအုပ်များ', this)"><i class="ri-book-3-line"></i><span>စာအုပ်များ</span></a>
+        <a class="cat-item" onclick="filterBlog('Machine Learning', this)"><i class="ri-robot-line"></i><span>ML</span></a>
+        <a class="cat-item" onclick="filterBlog('Predictive Analytics', this)"><i class="ri-bar-chart-grouped-line"></i><span>Analytics</span></a>
+        <a class="cat-item" onclick="filterBlog('Public Policy', this)"><i class="ri-government-line"></i><span>Policy</span></a>
+        <a class="cat-item" onclick="filterBlog('General', this)"><i class="ri-lightbulb-flash-line"></i><span>General</span></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-5 mb-5">
+    <div class="row g-4" id="blogContainer">
+       </div>
+
+    <div class="toc-section" id="toc" data-aos="fade-up">
+      <div class="toc-title"><i class="ri-list-ordered"></i> ဆောင်းပါးများ မာတိကာ</div>
+      <ul class="toc-list" id="tocList">
+         </ul>
+    </div>
+  </div>
+
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h3 style="font-weight: 800; color: var(--primary-purple);">Daw Thin Yanant</h3>
+            <p class="mt-3">
+              Researcher in Information Technology & Public Policy<br><br>
+              <strong>Email:</strong> thinyanant@uit.edu.mm<br>
+            </p>
+          </div>
+          <div class="col-lg-4 col-md-6 footer-newsletter">
+            <h4 style="font-weight: 700; color: var(--primary-purple);">Join Our Newsletter</h4>
+            <p>သုတေသနစာတမ်းများနှင့် ဗဟုသုတအသစ်များကို အီးမေးလ်မှတဆင့် ရယူရန် Subscribe လုပ်ထားပါ။</p>
+            <form onsubmit="event.preventDefault(); alert('Subscribed Successfully!');">
+              <input type="email" name="email" required placeholder="Email Address...">
+              <input type="submit" value="Subscribe">
+            </form>
+          </div>
+          <div class="col-lg-4 col-md-6 text-center pt-4">
+            <h4 style="font-weight: 700; color: var(--primary-purple);">Follow Me</h4>
+            <div class="social-links text-center mt-3">
+              <a href="#"><i class="bx bxl-facebook"></i></a>
+              <a href="#"><i class="bx bxl-linkedin"></i></a>
+              <a href="#"><i class="ri-mail-send-fill"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container py-4 text-center">
+      <div class="copyright">&copy; Copyright <strong><span>Daw Thin Yanant</span></strong>. All Rights Reserved.</div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/posts-handler.js"></script>
+  
+  <script>
+    AOS.init({ duration: 800, once: true });
+
+    // --- Dynamic Rendering Logic for the New UI ---
+    function renderBlogPostsUI() {
+        const container = document.getElementById('blogContainer');
+        const tocList = document.getElementById('tocList');
+        
+        if(!container || !window.myPosts) return;
+
+        container.innerHTML = '';
+        tocList.innerHTML = '';
+
+        window.myPosts.forEach(post => {
+            // ၁။ ဆောင်းပါးကတ်များ ဖန်တီးခြင်း
+            const col = document.createElement('div');
+            col.className = 'col-lg-3 col-md-6 blog-item';
+            col.setAttribute('data-category', post.category);
+            col.setAttribute('data-title', post.title);
+            
+            col.innerHTML = `
+              <div class="blog-card" data-aos="fade-up">
+                <img src="${post.cover}" onerror="this.src='https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80'">
+                <div class="blog-content">
+                  <span class="badge-cat">${post.category}</span>
+                  <h5>${post.title}</h5>
+                  <p>${post.excerpt}</p>
+                  <a href="single-blog.html?id=${post.id}" class="btn-read">အပြည့်အစုံဖတ်ရန်</a>
+                </div>
+              </div>
+            `;
+            container.appendChild(col);
+
+            // ၂။ မာတိကာ (TOC) ဖန်တီးခြင်း
+            const li = document.createElement('li');
+            li.innerHTML = `<a href="single-blog.html?id=${post.id}"><i class="ri-arrow-right-s-fill"></i> ${post.title}</a>`;
+            tocList.appendChild(li);
+        });
+    }
+
+    // Category ဖြင့် စစ်ထုတ်ခြင်း (Filter) နှင့် ခလုတ်အရောင်ပြောင်းခြင်း
+    function filterBlog(category, element) {
+        // Active class ကို အသစ်နှိပ်လိုက်သော ခလုတ်သို့ ပြောင်းပေးခြင်း
+        document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
+        if(element) element.classList.add('active');
+
+        const items = document.querySelectorAll('.blog-item');
+        items.forEach(item => {
+            if (category === 'all') {
+                item.style.display = 'block';
+            } else {
+                item.getAttribute('data-category') === category ? item.style.display = 'block' : item.style.display = 'none';
+            }
+        });
+    }
+
+    // စာသားဖြင့် ရှာဖွေခြင်း (Search)
+    function searchBlog() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const items = document.querySelectorAll('.blog-item');
+        
+        // ရှာဖွေနေချိန်တွင် Category ကို "All" သို့ အလိုအလျောက် ပြန်ထားပေးမည်
+        document.querySelectorAll('.cat-item').forEach(el => el.classList.remove('active'));
+        document.querySelector('.cat-item').classList.add('active'); // "All" button
+
+        items.forEach(item => {
+            const title = item.getAttribute('data-title').toLowerCase();
+            item.style.display = title.includes(input) ? 'block' : 'none';
+        });
+    }
+
+    // စာမျက်နှာပွင့်သည်နှင့် ဆောင်းပါးများကို UI အသစ်ဖြင့် ပြသရန်
+    document.addEventListener('DOMContentLoaded', () => {
+        // posts-handler.js ၏ data ကို ရယူပြီး UI တည်ဆောက်ရန်
+        setTimeout(renderBlogPostsUI, 100); 
+    });
+  </script>
+</body>
+</html>
