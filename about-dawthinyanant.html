@@ -6,6 +6,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>About Me - Daw Thin Yanant</title>
   
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Myanmar:wght@400;600;700&family=Padauk:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -19,83 +20,48 @@
       --text-dark: #333333;
     }
 
-    body { font-family: 'Pyidaungsu', 'Georgia', serif; background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; }
+    body, h1, h2, h3, h4, h5, h6, p, a, span, div, li, button, input {
+      font-family: 'Georgia', "Noto Sans Myanmar", "Padauk", "Pyidaungsu", serif !important;
+    }
+
+    body { background-color: var(--light-bg); color: var(--text-dark); line-height: 1.8; overflow-x: hidden; margin: 0; padding: 0; }
     
-    /* Navbar Styles */
+    .lang-mm { display: none; }
+    body.myanmar-active .lang-en { display: none; }
+    body.myanmar-active .lang-mm { display: inline-block; }
+    body.myanmar-active h1.lang-mm, 
+    body.myanmar-active h2.lang-mm,
+    body.myanmar-active h4.lang-mm,
+    body.myanmar-active h5.lang-mm,
+    body.myanmar-active p.lang-mm { display: block; }
+
+    .top-bar { background-color: var(--primary-purple); color: white; padding: 10px 0; font-size: 13px; }
+    .top-bar a { color: white; text-decoration: none; }
+
     .navbar { background: white; border-bottom: 4px solid var(--accent-purple); padding: 15px 0; }
     .navbar-brand { font-weight: 800; color: var(--primary-purple) !important; font-size: 1.5rem; letter-spacing: 0.5px; }
     .nav-link { color: var(--text-dark) !important; font-weight: 700; font-size: 15px; margin: 0 10px; transition: 0.3s; }
     .nav-link:hover, .nav-link.active { color: var(--accent-purple) !important; }
 
-    /* Hero Section */
     .about-hero {
       background: linear-gradient(rgba(75, 35, 84, 0.9), rgba(111, 66, 193, 0.8)), url('https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
-      padding: 80px 0 100px 0;
-      color: white;
-      text-align: center;
+      background-size: cover; background-position: center; padding: 80px 0 100px 0; color: white; text-align: center;
     }
-
     .about-hero h1 { font-weight: 800; font-size: 2.5rem; margin-bottom: 10px; }
     .about-hero p { font-size: 1.2rem; opacity: 0.9; }
 
-    /* Profile Content */
-    .profile-container {
-      margin-top: -60px;
-      position: relative;
-      z-index: 10;
-    }
+    .profile-container { margin-top: -60px; position: relative; z-index: 10; }
+    .profile-card { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); padding: 40px; border-top: 5px solid var(--accent-purple); }
+    .profile-img-wrap { text-align: center; margin-bottom: 25px; }
+    .profile-img-wrap img { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.2); margin-top: -100px; }
 
-    .profile-card {
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-      padding: 40px;
-      border-top: 5px solid var(--accent-purple);
-    }
-
-    .profile-img-wrap {
-      text-align: center;
-      margin-bottom: 25px;
-    }
-
-    .profile-img-wrap img {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 5px solid white;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      margin-top: -100px;
-    }
-
-    /* 🌟 Quote Style */
     .custom-quote {
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--primary-purple);
-      font-style: italic;
-      border-left: 5px solid var(--accent-purple);
-      background: #f3f0ff;
-      padding: 15px 30px;
-      border-radius: 0 15px 15px 0;
-      display: inline-block;
-      margin: 0 auto 35px auto;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+      font-size: 1.25rem; font-weight: 700; color: var(--primary-purple); font-style: italic;
+      border-left: 5px solid var(--accent-purple); background: #f3f0ff; padding: 15px 30px;
+      border-radius: 0 15px 15px 0; display: inline-block; margin: 0 auto 35px auto; box-shadow: 0 3px 10px rgba(0,0,0,0.03);
     }
 
-    .section-title {
-      font-weight: 800;
-      color: var(--primary-purple);
-      margin-bottom: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      border-bottom: 2px solid #eee;
-      padding-bottom: 10px;
-    }
-
+    .section-title { font-weight: 800; color: var(--primary-purple); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #eee; padding-bottom: 10px; }
     .info-list { list-style: none; padding: 0; }
     .info-list li { margin-bottom: 20px; position: relative; padding-left: 25px; }
     .info-list li i { position: absolute; left: 0; top: 5px; color: var(--accent-purple); font-size: 1.2rem; }
@@ -103,23 +69,32 @@
     .info-list p { margin-bottom: 0; color: #555; font-size: 0.95rem; line-height: 1.7; }
 
     .tag-badge {
-      display: inline-block;
-      padding: 6px 15px;
-      background: #f3f0ff;
-      color: var(--accent-purple);
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 700;
-      margin: 5px 5px 5px 0;
-      border: 1px solid var(--accent-purple);
+      display: inline-block; padding: 6px 15px; background: #f3f0ff; color: var(--accent-purple);
+      border-radius: 50px; font-size: 0.85rem; font-weight: 700; margin: 5px 5px 5px 0; border: 1px solid var(--accent-purple);
     }
 
-    /* Footer */
     footer { background-color: var(--primary-purple); color: white; padding: 30px 0; margin-top: 50px; text-align: center; }
   </style>
 </head>
 
 <body>
+
+  <div class="top-bar d-none d-md-block">
+    <div class="container d-flex justify-content-between">
+        <div>
+            <i class="ri-information-line align-middle"></i> Official Profile & Research Portfolio
+            <span class="mx-2 opacity-50">|</span>
+            <i class="ri-earth-line align-middle text-warning"></i> 
+            <span id="visitor-info" style="color: #ffde59; font-weight: bold;">
+                <span class="lang-en">Fetching location...</span>
+                <span class="lang-mm">တည်နေရာ ရှာဖွေနေပါသည်...</span>
+            </span>
+        </div>
+        <div>
+            <a href="mailto:thinyanant@uit.edu.mm" class="me-3"><i class="ri-mail-send-line align-middle"></i> thinyanant@uit.edu.mm</a>
+        </div>
+    </div>
+  </div>
 
   <nav class="navbar navbar-expand-lg sticky-top shadow-sm">
     <div class="container">
@@ -129,22 +104,15 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto align-items-center">
-              <li class="nav-item">
-                  <a class="nav-link" href="index.html">ပင်မစာမျက်နှာ</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link active" href="about-dawthinyanant.html">ကိုယ်ရေးအကျဉ်း</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="resources.html">အရင်းအမြစ်များ</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" href="blog.html">စာတမ်းများ</a>
-              </li>
+              <li class="nav-item"><a class="nav-link" href="index.html"><span class="lang-en">Home</span><span class="lang-mm">ပင်မစာမျက်နှာ</span></a></li>
+              <li class="nav-item"><a class="nav-link active" href="about_dawthinyanant.html"><span class="lang-en">About Me</span><span class="lang-mm">ကိုယ်ရေးအကျဉ်း</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="resources.html"><span class="lang-en">Resources</span><span class="lang-mm">အရင်းအမြစ်များ</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="/posts/"><span class="lang-en">Publications</span><span class="lang-mm">စာတမ်းများ</span></a></li>
+              <li class="nav-item"><a class="nav-link" href="gallery.html"><span class="lang-en">Gallery</span><span class="lang-mm">မှတ်တမ်းများ</span></a></li>
               <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-                  <a href="mailto:thinyanant@uit.edu.mm" class="btn btn-outline-primary fw-bold px-4" style="color: var(--accent-purple); border-color: var(--accent-purple); border-radius: 8px;">
-                      <i class="ri-mail-send-line me-1"></i> ဆက်သွယ်ရန်
-                  </a>
+                  <button class="btn btn-outline-primary btn-sm fw-bold px-3 py-2" onclick="toggleLanguage()" style="color: var(--accent-purple); border-color: var(--accent-purple); border-radius: 8px;">
+                      <i class="ri-translate-2 align-middle"></i> မြန်မာ / EN
+                  </button>
               </li>
           </ul>
       </div>
@@ -154,7 +122,8 @@
   <section class="about-hero">
     <div class="container" data-aos="zoom-in">
       <h1>About Me</h1>
-      <p>သုတေသနနှင့် နည်းပညာဖြင့် လူ့အဖွဲ့အစည်းကို အကျိုးပြုမည့်သူ</p>
+      <p class="lang-en">Committed to empowering society through research and technology.</p>
+      <p class="lang-mm">သုတေသနနှင့် နည်းပညာဖြင့် လူ့အဖွဲ့အစည်းကို အကျိုးပြုမည့်သူ</p>
     </div>
   </section>
 
@@ -165,42 +134,38 @@
           
           <div class="profile-img-wrap">
             <img src="https://69a88e8c62aea864bacd7a58.imgix.net/data/ty.jpg" alt="Daw Thin Yanant">
-            <h2 class="fw-bold mt-3" style="color: var(--primary-purple);">Daw Thin Yanant</h2>
+            <h2 class="fw-bold mt-3" style="color: var(--primary-purple);">
+                <span class="lang-en">Daw Thin Yanant</span><span class="lang-mm">ဒေါ်သင်းရနံ့</span>
+            </h2>
             <p class="text-muted fw-bold">Researcher | IT Specialist | Public Policy Analyst</p>
           </div>
 
           <div class="text-center" data-aos="zoom-in" data-aos-delay="100">
             <blockquote class="custom-quote">
               <i class="ri-double-quotes-l align-top" style="font-size: 1.5rem; opacity: 0.5;"></i>
-              ဒေတာနဲ့ ဦးတည်တဲ့ ဆုံးဖြတ်ချက်တွေက ယုံကြည်မှုနဲ့ ပြည့်တဲ့ အုပ်ချုပ်ရေးကို ဖန်တီးပေးနိုင်ပါတယ်။
+              <span class="lang-en">Data-driven decisions can create governance filled with trust.</span>
+              <span class="lang-mm">ဒေတာနဲ့ ဦးတည်တဲ့ ဆုံးဖြတ်ချက်တွေက ယုံကြည်မှုနဲ့ ပြည့်တဲ့ အုပ်ချုပ်ရေးကို ဖန်တီးပေးနိုင်ပါတယ်။</span>
               <i class="ri-double-quotes-r align-bottom" style="font-size: 1.5rem; opacity: 0.5;"></i>
             </blockquote>
           </div>
 
           <div class="row g-5">
             <div class="col-md-6">
-              <h4 class="section-title"><i class="ri-user-smile-line"></i> ကိုယ်ရေးအချက်အလက်</h4>
-              <p style="text-align: justify;">
+              <h4 class="section-title"><i class="ri-user-smile-line"></i> 
+                  <span class="lang-en">Personal Profile</span><span class="lang-mm">ကိုယ်ရေးအချက်အလက်</span>
+              </h4>
+              <p class="lang-en" style="text-align: justify;">
+                I am Daw Thin Yanant (27 years old), a researcher specializing in Information Technology (IT) and Public Policy. I am passionate about utilizing data-driven insights and Machine Learning technologies to analyze and address the challenges of modern society.
+              </p>
+              <p class="lang-mm" style="text-align: justify;">
                 ကျွန်မ ဒေါ်သင်းရနံ့ (အသက် ၂၇ နှစ်) သည် သတင်းအချက်အလက်နည်းပညာ (IT) နှင့် အများပြည်သူဆိုင်ရာ မူဝါဒ (Public Policy) ကဏ္ဍများကို ပေါင်းစပ်လေ့လာနေသော သုတေသီတစ်ဦး ဖြစ်ပါသည်။ Data-driven insights နှင့် Machine Learning နည်းပညာများကို အသုံးပြု၍ မျက်မှောက်ခေတ် လူ့အဖွဲ့အစည်း၏ စိန်ခေါ်မှုများကို ခွဲခြမ်းစိတ်ဖြာ ဖြေရှင်းနိုင်ရန် အထူးစိတ်ဝင်စားပါသည်။
               </p>
-
-              <h4 class="section-title mt-5"><i class="ri-group-line"></i> အသင်းအဖွဲ့ ပါဝင်လှုပ်ရှားမှုများ</h4>
-              <ul class="info-list">
-                <li>
-                  <i class="ri-check-double-line"></i>
-                  <h5>SMEs, MCPA & MCIA</h5>
-                  <p>အသေးစားနှင့် အလတ်စား စီးပွားရေးလုပ်ငန်းများ (SMEs) ဖွံ့ဖြိုးတိုးတက်ရေးအပြင် မြန်မာနိုင်ငံ ကွန်ပျူတာပညာရှင်အသင်း (MCPA) နှင့် ကွန်ပျူတာလုပ်ငန်းရှင်အသင်း (MCIA) တို့တွင် တက်ကြွစွာ ပါဝင်ဆောင်ရွက်လျက်ရှိပါသည်။</p>
-                </li>
-                <li>
-                  <i class="ri-check-double-line"></i>
-                  <h5>Young Men's Buddhist Association (YMBA)</h5>
-                  <p>လူမှုအကျိုးပြုနှင့် ဘာသာရေးဆိုင်ရာ အဖွဲ့အစည်းလှုပ်ရှားမှုများတွင် ပါဝင်ကူညီလျက်ရှိပါသည်။</p>
-                </li>
-              </ul>
             </div>
 
             <div class="col-md-6">
-              <h4 class="section-title"><i class="ri-graduation-cap-line"></i> ပညာရေးနောက်ခံ</h4>
+              <h4 class="section-title"><i class="ri-graduation-cap-line"></i> 
+                  <span class="lang-en">Education</span><span class="lang-mm">ပညာရေးနောက်ခံ</span>
+              </h4>
               <ul class="info-list">
                 <li>
                   <i class="ri-book-read-fill"></i>
@@ -210,16 +175,67 @@
                 <li>
                   <i class="ri-government-fill"></i>
                   <h5>Diploma in Political Science</h5>
-                  <p>နိုင်ငံရေးစနစ်များနှင့် New Public Management (NPM) ဘာသာရပ်များကို လေ့လာသင်ယူလျက်ရှိပါသည်။</p>
+                  <p class="lang-en">Studying political systems and New Public Management (NPM).</p>
+                  <p class="lang-mm">နိုင်ငံရေးစနစ်များနှင့် New Public Management (NPM) ဘာသာရပ်များကို လေ့လာသင်ယူလျက်ရှိပါသည်။</p>
                 </li>
                 <li>
                   <i class="ri-macbook-fill"></i>
                   <h5>MSc & BSc (Hons) in Computer Science</h5>
-                  <p>ကွန်ပျူတာသိပ္ပံဘာသာရပ်ဖြင့် မဟာဘွဲ့နှင့် ဂုဏ်ထူးတန်းဘွဲ့များ ရရှိထားပါသည်။</p>
+                  <p class="lang-en">Holds Master's and Bachelor's Honors degrees in Computer Science.</p>
+                  <p class="lang-mm">ကွန်ပျူတာသိပ္ပံဘာသာရပ်ဖြင့် မဟာဘွဲ့နှင့် ဂုဏ်ထူးတန်းဘွဲ့များ ရရှိထားပါသည်။</p>
                 </li>
               </ul>
+            </div>
+          </div>
 
-              <h4 class="section-title mt-5"><i class="ri-file-search-line"></i> သုတေသန လုပ်ငန်းစဉ်များ</h4>
+          <div class="row g-5 mt-2 border-top pt-4">
+            <div class="col-md-6">
+              <h4 class="section-title"><i class="ri-group-line"></i> 
+                  <span class="lang-en">Community & Memberships</span><span class="lang-mm">လူမှုရေးနှင့် အသင်းအဖွဲ့များ</span>
+              </h4>
+              <ul class="info-list">
+                <li>
+                  <i class="ri-medal-star-fill"></i>
+                  <h5 class="lang-en mb-1">Professional Memberships</h5>
+                  <h5 class="lang-mm mb-1">ပညာရှင်အဆင့် အသင်းဝင်</h5>
+                  <p class="lang-en"><strong>MCPA:</strong> Myanmar Computer Professionals Association</p>
+                  <p class="lang-mm"><strong>MCPA:</strong> မြန်မာနိုင်ငံ ကွန်ပျူတာပညာရှင်အသင်း</p>
+                </li>
+                <li>
+                  <i class="ri-briefcase-4-fill"></i>
+                  <h5 class="lang-en mb-1">Business & Industry</h5>
+                  <h5 class="lang-mm mb-1">စီးပွားရေးလုပ်ငန်းဆိုင်ရာ</h5>
+                  <p class="lang-en">
+                    <strong>MCIA:</strong> Myanmar Computer Industry Association<br>
+                    <strong>MSMEs:</strong> Micro, Small and Medium Enterprises<br>
+                    <strong>MWES:</strong> Myanmar Women Entrepreneurs Association
+                  </p>
+                  <p class="lang-mm">
+                    <strong>MCIA:</strong> မြန်မာနိုင်ငံ ကွန်ပျူတာလုပ်ငန်းရှင်အသင်း<br>
+                    <strong>MSMEs:</strong> အသေးစား၊ အငယ်စားနှင့် အလတ်စား စီးပွားရေးလုပ်ငန်းများ<br>
+                    <strong>MWES:</strong> မြန်မာအမျိုးသမီး စီးပွားရေးစွမ်းဆောင်ရှင်များအသင်း
+                  </p>
+                </li>
+                <li>
+                  <i class="ri-heart-pulse-fill"></i>
+                  <h5 class="lang-en mb-1">Social Organizations</h5>
+                  <h5 class="lang-mm mb-1">လူမှုရေး အသင်းအဖွဲ့များ</h5>
+                  <p class="lang-en">
+                    <strong>YMBA:</strong> Young Men's Buddhist Association<br>
+                    <strong>YWDA:</strong> Yangon Women's Development Association
+                  </p>
+                  <p class="lang-mm">
+                    <strong>YMBA:</strong> ဗုဒ္ဓဘာသာကလျာဏယုဝအသင်း (Young Men's Buddhist Association)<br>
+                    <strong>YWDA:</strong> ရန်ကုန်အမျိုးသမီးများ ဖွံ့ဖြိုးတိုးတက်ရေးအသင်း
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-6">
+              <h4 class="section-title"><i class="ri-file-search-line"></i> 
+                  <span class="lang-en">Research Work</span><span class="lang-mm">သုတေသန လုပ်ငန်းစဉ်များ</span>
+              </h4>
               <ul class="info-list">
                 <li>
                   <i class="ri-flask-fill"></i>
@@ -229,48 +245,86 @@
                 <li>
                   <i class="ri-article-fill"></i>
                   <h5>Research Paper</h5>
-                  <p>"Predictive Intelligence for Counter-Insurgency" ခေါင်းစဉ်ဖြင့် သုတေသနစာတမ်း ပြုစုရေးသားလျက်ရှိပါသည်။</p>
+                  <p class="lang-en">Currently writing a research paper on "Predictive Intelligence for Counter-Insurgency".</p>
+                  <p class="lang-mm">"Predictive Intelligence for Counter-Insurgency" ခေါင်းစဉ်ဖြင့် သုတေသနစာတမ်း ပြုစုရေးသားလျက်ရှိပါသည်။</p>
                 </li>
               </ul>
+            </div>
+          </div>
 
-              <div class="mt-4">
-                <span class="tag-badge">Machine Learning</span>
-                <span class="tag-badge">Predictive Analytics</span>
-                <span class="tag-badge">Public Policy</span>
-                <span class="tag-badge">Data Science</span>
-              </div>
+          <div class="row g-5 mt-2 border-top pt-4">
+            <div class="col-md-6">
+              <h4 class="section-title"><i class="ri-award-fill"></i> 
+                  <span class="lang-en">Awards & Achievements</span><span class="lang-mm">ဆုတံဆိပ်နှင့် ဂုဏ်ပြုမှတ်တမ်းများ</span>
+              </h4>
+              <ul class="info-list">
+                <li>
+                  <i class="ri-medal-fill"></i>
+                  <h5 class="lang-en mb-1">2nd Prize Winner (Presentation)</h5>
+                  <h5 class="lang-mm mb-1">ဒုတိယဆု (Presentation)</h5>
+                  <p class="lang-en"><strong>International Girls in ICT Day (2022)</strong> - University of Yangon. Topic: "Access and Safety Challenges of Girls in ICT Era".</p>
+                  <p class="lang-mm"><strong>International Girls in ICT Day (2022)</strong> - ရန်ကုန်တက္ကသိုလ်မှ ကျင်းပသော အထိမ်းအမှတ်ပွဲတွင် "Access and Safety Challenges of Girls in ICT Era" ခေါင်းစဉ်ဖြင့် ဒုတိယဆု ရရှိခဲ့ပါသည်။</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="col-md-6">
+              <h4 class="section-title"><i class="ri-verified-badge-fill"></i> 
+                  <span class="lang-en">Certifications & Training</span><span class="lang-mm">အောင်လက်မှတ်နှင့် သင်တန်းများ</span>
+              </h4>
+              <ul class="info-list">
+                <li>
+                  <i class="ri-checkbox-circle-fill"></i>
+                  <h5 class="lang-en mb-1">Journalism & Media Training (2026)</h5>
+                  <h5 class="lang-mm mb-1">သတင်းမီဒီယာ သင်တန်း (၂၀၂၆)</h5>
+                  <p class="lang-en">Journalism Training Batch (6) - Myanmar Press Council.</p>
+                  <p class="lang-mm">သတင်းမီဒီယာ သင်တန်းအမှတ်စဉ်(၆) - မြန်မာနိုင်ငံ သတင်းမီဒီယာကောင်စီ (Myanmar Press Council)။</p>
+                </li>
+                <li>
+                  <i class="ri-checkbox-circle-fill"></i>
+                  <h5 class="lang-en mb-1">Programming & Business Skills (2019)</h5>
+                  <h5 class="lang-mm mb-1">Programming & Business Skills (2019)</h5>
+                  <p class="lang-en">Programming Fundamental (ACE) & Essential Skills For Business Careers (Strategy First).</p>
+                  <p class="lang-mm">Programming Fundamental (ACE) နှင့် Essential Skills For Business Careers (Strategy First) သင်တန်းများ။</p>
+                </li>
+                <li>
+                  <i class="ri-checkbox-circle-fill"></i>
+                  <h5 class="lang-en mb-1">Software Engineering & SQL (2017-18)</h5>
+                  <h5 class="lang-mm mb-1">Software Engineering & SQL (2017-18)</h5>
+                  <p class="lang-en">Advanced Certificate in Software Engineering, Certificate of Competence, Querying MS SQL Server 2012 (KMD).</p>
+                  <p class="lang-mm">Advanced Certificate in Software Engineering, Certificate of Competence နှင့် MS SQL Server 2012 သင်တန်းများ (KMD)။</p>
+                </li>
+              </ul>
             </div>
           </div>
 
           <div class="row g-5 mt-2 border-top pt-4">
             <div class="col-md-6" data-aos="fade-right">
-              <h4 class="section-title"><i class="ri-focus-2-line"></i> အနာဂတ် မျှော်မှန်းချက်များ</h4>
+              <h4 class="section-title"><i class="ri-focus-2-line"></i> 
+                  <span class="lang-en">Future Visions</span><span class="lang-mm">အနာဂတ် မျှော်မှန်းချက်များ</span>
+              </h4>
               <ul class="info-list">
                 <li>
                   <i class="ri-arrow-right-circle-fill"></i>
-                  <h5 class="mb-1">ဒေတာအခြေပြု မူဝါဒများ ဖော်ဆောင်ရေး</h5>
-                  <p>နည်းပညာနှင့် ဒေတာခွဲခြမ်းစိတ်ဖြာမှုများကို အခြေခံ၍ လူ့အဖွဲ့အစည်းအတွက် ပိုမိုထိရောက်ပြီး ပွင့်လင်းမြင်သာမှုရှိသော အများပြည်သူဆိုင်ရာ မူဝါဒများ ချမှတ်နိုင်ရေး။</p>
-                </li>
-                <li>
-                  <i class="ri-arrow-right-circle-fill"></i>
-                  <h5 class="mb-1">လူ့စွမ်းအားအရင်းအမြစ် ဖွံ့ဖြိုးတိုးတက်ရေး</h5>
-                  <p>လူငယ်များအတွက် ဒစ်ဂျစ်တယ်စွမ်းရည်များ မြှင့်တင်ပေးပြီး နိုင်ငံတကာနှင့် ရင်ပေါင်တန်းနိုင်သော အနာဂတ်မျိုးဆက်သစ်များ မွေးထုတ်ပေးရေး။</p>
+                  <h5 class="lang-en mb-1">Data-Driven Policy Making</h5>
+                  <h5 class="lang-mm mb-1">ဒေတာအခြေပြု မူဝါဒများ ဖော်ဆောင်ရေး</h5>
+                  <p class="lang-en">Formulating effective and transparent public policies based on technology and data analytics.</p>
+                  <p class="lang-mm">နည်းပညာနှင့် ဒေတာခွဲခြမ်းစိတ်ဖြာမှုများကို အခြေခံ၍ လူ့အဖွဲ့အစည်းအတွက် ပိုမိုထိရောက်ပြီး ပွင့်လင်းမြင်သာမှုရှိသော အများပြည်သူဆိုင်ရာ မူဝါဒများ ချမှတ်နိုင်ရေး။</p>
                 </li>
               </ul>
             </div>
 
             <div class="col-md-6" data-aos="fade-left">
-              <h4 class="section-title"><i class="ri-shake-hands-line"></i> လုပ်ငန်းစဉ် ကတိကဝတ်များ</h4>
+              <h4 class="section-title"><i class="ri-shake-hands-line"></i> 
+                  <span class="lang-en">Commitments</span><span class="lang-mm">လုပ်ငန်းစဉ် ကတိကဝတ်များ</span>
+              </h4>
               <ul class="info-list">
                 <li>
                   <i class="ri-shield-check-fill"></i>
-                  <h5 class="mb-1">သုတေသနရလဒ်များကို လက်တွေ့အသုံးချခြင်း</h5>
-                  <p>စဉ်ဆက်မပြတ် လေ့လာသင်ယူပြီး ရရှိလာသော သုတေသနရလဒ်များကို လက်တွေ့လုပ်ငန်းခွင်နှင့် လူ့အဖွဲ့အစည်း အကျိုးပြုလုပ်ငန်းများတွင် အသုံးချသွားမည်။</p>
-                </li>
-                <li>
-                  <i class="ri-shield-check-fill"></i>
-                  <h5 class="mb-1">ပူးပေါင်းဆောင်ရွက်မှု မြှင့်တင်ခြင်း</h5>
-                  <p>IT နယ်ပယ်ရှိ အသင်းအဖွဲ့များ၊ ပညာရှင်များနှင့် ပူးပေါင်း၍ နည်းပညာကဏ္ဍ ဖွံ့ဖြိုးတိုးတက်ရေး လုပ်ငန်းစဉ်များကို တက်ကြွစွာ အကောင်အထည်ဖော် ဆောင်ရွက်မည်။</p>
+                  <h5 class="lang-en mb-1">Applying Research Outcomes</h5>
+                  <h5 class="lang-mm mb-1">သုတေသနရလဒ်များကို လက်တွေ့အသုံးချခြင်း</h5>
+                  <p class="lang-en">Applying continuous learning and research outcomes to practical workplaces and social development initiatives.</p>
+                  <p class="lang-mm">စဉ်ဆက်မပြတ် လေ့လာသင်ယူပြီး ရရှိလာသော သုတေသနရလဒ်များကို လက်တွေ့လုပ်ငန်းခွင်နှင့် လူ့အဖွဲ့အစည်း အကျိုးပြုလုပ်ငန်းများတွင် အသုံးချသွားမည်။</p>
                 </li>
               </ul>
             </div>
@@ -283,14 +337,14 @@
 
   <footer>
     <div class="container">
-      <p class="mb-0 small">&copy; 2026 Daw Thin Yanant. Professional Portfolio. All rights reserved.</p>
+      <p class="mb-0 small lang-en">&copy; 2026 Daw Thin Yanant. Professional Portfolio. All rights reserved.</p>
+      <p class="mb-0 small lang-mm">&copy; ၂၀၂၆ ဒေါ်သင်းရနံ့။ မူပိုင်ခွင့်များအားလုံး ရယူထားပြီးဖြစ်ပါသည်။</p>
     </div>
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script>
-    AOS.init({ duration: 800, once: true });
-  </script>
+  <script src="js/main.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
 </body>
 </html>
