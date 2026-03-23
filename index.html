@@ -36,35 +36,60 @@
       </div>
   </div>
   
-  <header class="header-area">
-    <div class="container d-flex align-items-center justify-content-between">
-      <a href="index.html" class="navbar-brand text-decoration-none">
+<nav class="navbar navbar-expand-lg sticky-top shadow-sm" style="background: white; border-bottom: 4px solid var(--accent-purple); padding: 15px 0;">
+    <div class="container">
+      <a class="navbar-brand text-decoration-none" href="index.html">
           <span class="lang-en fw-bold" style="color: #4b2354;">DAW THIN YANANT</span>
           <span class="lang-mm fw-bold" style="color: #4b2354;">ဒေါ်သင်းရနံ့</span>
       </a>
-      <nav class="d-none d-lg-block">
-        <a href="index.html" class="nav-link d-inline-block text-primary fw-bold mx-2">
-            <span class="lang-en">Home</span><span class="lang-mm">ပင်မ</span>
-        </a>
-        <a href="about-dawthinyanant.html" class="nav-link d-inline-block text-dark fw-bold mx-2">
-            <span class="lang-en">About Me</span><span class="lang-mm">ကိုယ်ရေးအကျဉ်း</span>
-        </a>
-        <a href="resources.html" class="nav-link d-inline-block text-dark fw-bold mx-2">
-            <span class="lang-en">Resources</span><span class="lang-mm">အရင်းအမြစ်များ</span>
-        </a>
-        <a href="blog.html" class="nav-link d-inline-block text-dark fw-bold mx-2">
-            <span class="lang-en">Publications <i class="ri-external-link-line align-middle"></i></span>
-            <span class="lang-mm">စာတမ်းများ <i class="ri-external-link-line align-middle"></i></span>
-        </a>
-        <a href="#contact" class="nav-link d-inline-block text-dark fw-bold mx-2">
-            <span class="lang-en">Contact</span><span class="lang-mm">ဆက်သွယ်ရန်</span>
-        </a>
-      </nav>
-      <div class="d-flex align-items-center">
-        <button id="langToggleBtn" class="btn btn-outline-primary btn-sm fw-bold" onclick="toggleLanguage()"><i class="ri-translate-2 align-middle"></i> မြန်မာ / EN</button>
+      
+      <div class="d-flex align-items-center d-lg-none gap-2">
+          <button class="btn btn-outline-primary btn-sm fw-bold px-2 py-1" onclick="toggleLanguage()" style="color: var(--accent-purple); border-color: var(--accent-purple); border-radius: 8px;">
+              <i class="ri-translate-2 align-middle"></i> EN/မြန်မာ
+          </button>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-center">
+              <li class="nav-item">
+                  <a href="index.html" class="nav-link fw-bold">
+                      <span class="lang-en">Home</span><span class="lang-mm">ပင်မ</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="about.html" class="nav-link fw-bold">
+                      <span class="lang-en">About Me</span><span class="lang-mm">ကိုယ်ရေးအကျဉ်း</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="resources.html" class="nav-link fw-bold">
+                      <span class="lang-en">Resources</span><span class="lang-mm">အရင်းအမြစ်များ</span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="blog.html" class="nav-link fw-bold">
+                      <span class="lang-en">Publications <i class="ri-external-link-line align-middle"></i></span>
+                      <span class="lang-mm">စာတမ်းများ <i class="ri-external-link-line align-middle"></i></span>
+                  </a>
+              </li>
+              <li class="nav-item">
+                  <a href="#contact" class="nav-link fw-bold">
+                      <span class="lang-en">Contact</span><span class="lang-mm">ဆက်သွယ်ရန်</span>
+                  </a>
+              </li>
+              
+              <li class="nav-item ms-lg-3 d-none d-lg-block">
+                  <button class="btn btn-outline-primary btn-sm fw-bold px-3 py-2" onclick="toggleLanguage()" style="color: var(--accent-purple); border-color: var(--accent-purple); border-radius: 8px;">
+                      <i class="ri-translate-2 align-middle"></i> မြန်မာ / EN
+                  </button>
+              </li>
+          </ul>
       </div>
     </div>
-  </header>
+  </nav>
 
   <section id="home" class="hero-section">
     <div class="container py-5">
